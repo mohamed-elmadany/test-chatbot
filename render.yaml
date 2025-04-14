@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: chatbot-test
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn wsgi:app"
+    envVars:
+      - key: MISTRAL_API_KEY
+        fromEnvVar: MISTRAL_API_KEY
+      - key: PAGE_ACCESS_TOKEN
+        fromEnvVar: PAGE_ACCESS_TOKEN
+      - key: VERIFY_TOKEN
+        fromEnvVar: VERIFY_TOKEN
+      - key: PORT
+        fromEnvVar: PORT
